@@ -103,7 +103,7 @@ window.addEventListener('load', () => {
 
     tl.from(".logo", { y: -50, opacity: 0, duration: 1, ease: "expo.out" })
         .from(".nav-links li", { y: -50, opacity: 0, stagger: 0.1, duration: 1, ease: "expo.out" }, "-=0.8")
-        .from(".btn-primary", { scale: 0.8, opacity: 0, duration: 1, ease: "back.out(1.7)" }, "-=0.5");
+        .from("#hero .btn-primary", { scale: 0.8, opacity: 0, duration: 1, ease: "back.out(1.7)" }, "-=0.5");
 });
 
 // Navbar Scroll Effect
