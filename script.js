@@ -173,3 +173,49 @@ filterBtns.forEach(btn => {
         });
     });
 });
+
+// Modal Functionality
+const modal = document.getElementById("image-modal");
+const modalImg = document.getElementById("full-image");
+const captionText = document.getElementById("caption");
+const closeModal = document.querySelector(".close-modal");
+
+projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const img = card.querySelector('img');
+        const h3 = card.querySelector('h3');
+
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        captionText.innerHTML = h3.innerHTML;
+
+        // Lock scroll
+        document.body.style.overflow = 'hidden';
+
+        gsap.fromTo(modalImg,
+            { scale: 0.8, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" }
+        );
+    });
+});
+
+const closeImageModal = () => {
+    modal.style.display = "none";
+    document.body.style.overflow = 'auto'; // Unlock scroll
+};
+
+closeModal.onclick = closeImageModal;
+
+// Close on background click
+modal.onclick = (e) => {
+    if (e.target === modal) {
+        closeImageModal();
+    }
+};
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+        closeImageModal();
+    }
+});
